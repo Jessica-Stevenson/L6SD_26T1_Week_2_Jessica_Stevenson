@@ -126,3 +126,38 @@ action.do_action("How art thou")
 
 action.undo()
 
+#Queue
+#Excersice 1
+print("-")
+
+to_do_list = []
+
+#Add Le task
+def add_task(task):
+    to_do_list.append(task)
+    print(f"Added task: {task}")
+
+#Exterminate Le task
+def remove_task(task):
+    if task in to_do_list:
+        to_do_list.remove(task)
+        print(f"Removed task: {task}")
+    else:
+        print("Task not found.")
+
+#Show yourself
+def show_tasks():
+    if not to_do_list:
+        print("To-do list is empty.")
+    else:
+        print("To-do list:")
+        for i, task in enumerate(to_do_list, start=1):
+            print(f"{i}. {task}")
+
+
+add_task("Take over the world")
+add_task("Bake Cookies")
+show_tasks()
+
+remove_task("Take over the world")
+show_tasks()
