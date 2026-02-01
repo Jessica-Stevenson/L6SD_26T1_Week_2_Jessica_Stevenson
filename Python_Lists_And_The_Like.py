@@ -161,3 +161,39 @@ show_tasks()
 
 remove_task("Take over the world")
 show_tasks()
+
+#Excercise 2
+print("-")
+
+queue = []
+
+#Add Le customor
+def add_customer(customer):
+    queue.append(customer)
+    print(f"{customer} has joined the queue.")
+
+#Serve Le customor
+def serve_customer():
+    if queue:
+        served = queue.pop(0)
+        print(f"{served} has been served.")
+    else:
+        print("No customers to serve.")
+
+#Show the Queue
+def show_queue():
+    if not queue:
+        print("The queue is empty.")
+    else:
+        print("Current queue:")
+        for i, customer in enumerate(queue, start=1):
+            print(f"{i}. {customer}")
+
+add_customer("Ronnie")
+add_customer("Alicia")
+add_customer("Gustave")
+
+show_queue()
+
+serve_customer()
+show_queue()
