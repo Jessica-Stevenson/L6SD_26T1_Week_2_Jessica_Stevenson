@@ -13,6 +13,7 @@ print(shopping_list)
 #Tuples
 #Excercise 1
 print("-")
+
 coordinates = (100, 200)
 
 print(coordinates)
@@ -48,6 +49,7 @@ print(library_catalogue)
 
 #Exercise 2
 print("-")
+
 def word_lengths(words):
     result = {}
     for word in words:
@@ -61,6 +63,7 @@ print(output)
 #Sets
 #Excercise 1
 print("-")
+
 def common_elements(list1, list2):
     return set(list1) & set(list2)
 
@@ -69,3 +72,12 @@ b = [4, 5, 6, 7, 9, 11, 13, 18]
 
 result = common_elements(a, b)
 print(result)
+
+#Excercise 2
+print("-")
+
+Games_List = ["Silksong", "Expedition 33", "Baldur's Gate 3", "Silksong"]
+
+Games_Set = set(Games_List)
+
+print(Games_Set)
