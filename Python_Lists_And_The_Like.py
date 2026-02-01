@@ -34,5 +34,26 @@ if "Banana" in fruits:
 else:
     print("Banana is not in the tuple")
 
+#Dictionary
+#Exercise 1
+print("-")
 
+library_catalogue = {
+    "Eye of minds" : "James Dashner",
+    "Le book" : "Le Author",
+    "La book" : "La Author"
+}
 
+print(library_catalogue)
+
+#Exercise 2
+print("-")
+def word_lengths(words):
+    result = {}
+    for word in words:
+        result[word] = len(word)
+    return result
+
+words = ["Bonjour", "Whatislove", "ForThoseWhoComeAfter", "SHAW"]
+output = word_lengths(words)
+print(output)
