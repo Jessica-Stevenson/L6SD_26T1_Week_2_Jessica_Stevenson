@@ -21,3 +21,18 @@ update = list(coordinates)
 update[0] = 200
 coordinates = tuple(update)
 print(coordinates)
+
+#Excercise 2
+print("-")
+
+fruits = ("Apple", "Banana", "Watermelon")
+
+print(fruits[1])
+
+if "Banana" in fruits:
+    print("Banana is in the tuple")
+else:
+    print("Banana is not in the tuple")
+
+
+
