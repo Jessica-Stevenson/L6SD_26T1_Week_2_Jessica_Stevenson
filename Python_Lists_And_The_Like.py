@@ -102,3 +102,27 @@ def reverse_list(list):
 numbers = [1, 2, 3, 4, 5]
 result = reverse_list(numbers)
 print(result)
+
+#Excercise 2
+class UndoStack:
+    def __init__(self):
+        self.stack = []
+
+    def do_action(self, action):
+        self.stack.append(action)
+        print(f"Action performed: {action}")
+
+    def undo(self):
+        if not self.stack:
+            print("Nothing to undo")
+        else:
+            last_action = self.stack.pop()
+            print(f"Undo action: {last_action}")
+
+action = UndoStack()
+
+action.do_action("Hello")
+action.do_action("How art thou")
+
+action.undo()
+
