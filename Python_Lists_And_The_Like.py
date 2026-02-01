@@ -81,3 +81,24 @@ Games_List = ["Silksong", "Expedition 33", "Baldur's Gate 3", "Silksong"]
 Games_Set = set(Games_List)
 
 print(Games_Set)
+
+#Stacks
+#Excercise 1
+print("-")
+
+def reverse_list(list):
+    stack = []
+
+    for item in list:
+        stack.append(item)
+
+    reversed_list = []
+
+    while stack:
+        reversed_list.append(stack.pop())
+
+    return reversed_list
+
+numbers = [1, 2, 3, 4, 5]
+result = reverse_list(numbers)
+print(result)
