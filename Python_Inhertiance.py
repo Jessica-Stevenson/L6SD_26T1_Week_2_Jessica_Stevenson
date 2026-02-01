@@ -43,3 +43,38 @@ class Employee(Skills):
 Human = Employee("Tim", 20, "Good", "Average")
 
 Human.info()
+
+#Multilevel Inhertiance
+print("-")
+class Vehicle:
+    def __init__(self, type):
+        self.type = type
+
+    def start_engine(self):
+        print(self.type + " engine has started")
+
+class Car(Vehicle):
+    def __init__(self, type, make, model, year):
+        super().__init__(type)
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def driving(self):
+        print(self.type + " is now driving")
+
+class Electric_Car(Car):
+    def __init__(self, type, make, model, year, elecy):
+        super().__init__(type, make, model, year)
+        self.elecy = elecy
+
+    def charge_battery(self):
+        print(self.type + " is now charging")
+
+CarObject = Car ("Car", "Destoryer 3000", "New Edition", 2025)
+
+ElectricCarObject = Electric_Car ("Car", "Cybertruck", "Crap Edition", 2024, "Electric")
+
+CarObject.driving()
+
+ElectricCarObject.charge_battery()
