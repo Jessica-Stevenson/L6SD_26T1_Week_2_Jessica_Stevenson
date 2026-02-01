@@ -116,3 +116,41 @@ class flightless(Bird):
 pengin = flightless ("Penguin", "Penguin", "Black and White", "Cannot fly")
 
 pengin.fly()
+
+#Scenario 2: School Subjects
+print("-")
+
+class Subject:
+    def __init__(self, name):
+        self.name = name
+
+    def study(self):
+        print(f"Studying {self.name}")
+
+class Math(Subject):
+    def __init__(self, name, difficulty_level):
+        super().__init__(name)
+        self.difficulty_level = difficulty_level
+
+    def solve_problem(self):
+        print(f"Solving a {self.difficulty_level} math problem")
+
+class Language(Subject):
+    def __init__(self, name, language_type):
+        super().__init__(name)
+        self.language_type = language_type
+
+    def practice_language(self):
+        print(f"Practicing {self.language_type} language")
+
+class pain(Math):
+    def __init__(self, name, difficulty_level, pain_level):
+        super().__init__(name, difficulty_level)
+        self.pain_level = pain_level
+
+    def info(self):
+        print(f"{self.name} has a pain level of {self.pain_level}")
+
+Mathness = pain ("Math", 10, 10,)
+
+Mathness.info()
