@@ -57,3 +57,15 @@ def word_lengths(words):
 words = ["Bonjour", "Whatislove", "ForThoseWhoComeAfter", "SHAW"]
 output = word_lengths(words)
 print(output)
+
+#Sets
+#Excercise 1
+print("-")
+def common_elements(list1, list2):
+    return set(list1) & set(list2)
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+b = [4, 5, 6, 7, 9, 11, 13, 18]
+
+result = common_elements(a, b)
+print(result)
