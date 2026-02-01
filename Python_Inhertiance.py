@@ -78,3 +78,41 @@ ElectricCarObject = Electric_Car ("Car", "Cybertruck", "Crap Edition", 2024, "El
 CarObject.driving()
 
 ElectricCarObject.charge_battery()
+
+#Scenario 1: Zoo Animals
+print("-")
+class Animal:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+
+    def make_sound(self):
+        print("Generic animal sound")
+
+class Mammal(Animal):
+    def __init__(self, name, species, fur_color):
+        super().__init__(name, species)
+        self.fur_color = fur_color
+
+    def give_birth(self):
+        print(f"{self.name} is giving birth")
+
+class Bird(Animal):
+    def __init__(self, name, species, feather_color):
+        super().__init__(name, species)
+        self.feather_color = feather_color
+
+    def fly(self):
+        print(f"{self.name} is flying")
+
+class flightless(Bird):
+    def __init__(self, name, species, feather_color, flight_ability):
+        super().__init__(name, species, feather_color)
+        self.flight_ability = flight_ability
+
+    def fly(self):
+        print(f"{self.name}'s cannot fly")
+
+pengin = flightless ("Penguin", "Penguin", "Black and White", "Cannot fly")
+
+pengin.fly()
