@@ -42,6 +42,47 @@ def add_vendors(vendors):
     return
 
 
+def remove_vendor(vendors):
+    if not vendors:
+        print("\nNo vendors to remove.")
+        return
+
+    print("\nRemove Vendor")
+    view_vendors(vendors)
+
+    choice = input("\nEnter the number of the vendor to remove (or press Enter to cancel): ").strip()
+
+    #Cancel if they press Enter
+    if choice == "":
+        print("Cancelled.")
+        return
+
+    #check it's a number
+    if not choice.isdigit():
+        print("Invalid input. Please enter a number.")
+        return
+
+    #Make sure it works with the lists
+    index = int(choice) - 1  
+
+    #Check range
+    if index < 0 or index >= len(vendors):
+        print("That number is out of range.")
+        return
+
+    vendor_to_remove = vendors[index]
+
+    #Confirmation Message
+    confirm = input(f"Are you sure you want to remove '{vendor_to_remove.name}'? (y/n): ").strip().lower()
+    if confirm != "y":
+        print("Cancelled")
+        return
+    
+    #The removal
+    removed = vendors.pop(index)
+    print(f"\nVendor '{removed.name}' removed successfully!")
+
+
 
 #Some Base Vendors
 vendors = [
@@ -54,12 +95,23 @@ vendors = [
 while True:
     choice = action_menu()
 
+    #View Vendors
     if choice == "1":
         view_vendors(vendors)
         input("contiune press [enter]" )
+    
+    #Add Vendors
     elif choice == "2":
         add_vendors(vendors)
         input("to contiune press [enter]" )
+
+    #Remove Vendors
+    elif choice == "3":
+        print("please choose a vendor to remove")
+        remove_vendor(vendors)
+
+        input("to contiune press [enter]" )
+
 
     elif choice == "6":
         print("Goodbye!")
