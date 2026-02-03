@@ -21,9 +21,16 @@ def view_vendors(vendors):
         return
 
     #This will show all the vendors
-    print("\n--- Vendor List ---")
+    print("\nVendor List")
     for i, vendor in enumerate(vendors, start=1):
         print(f"[{i}] Name: {vendor.name} | Phone: {vendor.phone} | Email: {vendor.email}")
+    
+    #Shows any extra attributes
+    extras = {key: details for key, details in vendor.__dict__.items() if key not in ("name", "phone", "email")}
+    if extras:
+        for key, details in extras.items():
+            print(f"    - {key}: {details}")
+
 
 #Add Vendors
 def add_vendors(vendors):
@@ -41,15 +48,17 @@ def add_vendors(vendors):
     print(f"\nVendor '{name}' added successfully!")
     return
 
-
+#Remove Vendors
 def remove_vendor(vendors):
     if not vendors:
         print("\nNo vendors to remove.")
         return
-
+    
+    #Shows a list of Vendors
     print("\nRemove Vendor")
     view_vendors(vendors)
 
+    #User Input
     choice = input("\nEnter the number of the vendor to remove (or press Enter to cancel): ").strip()
 
     #Cancel if they press Enter
@@ -82,7 +91,98 @@ def remove_vendor(vendors):
     removed = vendors.pop(index)
     print(f"\nVendor '{removed.name}' removed successfully!")
 
+#Search Vendors
+def search_vendor(vendors):
+    #Checks if there are no vendors
+    if not vendors:
+        print("\nNo vendors to search.")
+        return
 
+    #Search Input
+    print("\nSearch Vendor")
+    search = input("Enter name, phone, or email to search: ").strip().lower()
+
+    #Cancels if enter is pressed with no other input
+    if search == "":
+        print("Search cancelled (empty search).")
+        return
+    
+    #Checks for Matches
+    matches = []
+    for vendor in vendors:
+        #Combie all searchable parts
+        haystack = f"{vendor.name} {vendor.phone} {vendor.email}".lower()
+        if search in haystack:
+            matches.append(vendor)
+
+    #If there are no matches
+    if not matches:
+        print(f"\nNo vendors found matching: '{search}'")
+        return
+
+    #Prints the matches
+    print(f"\nFound {len(matches)} match(es):")
+    for i, vendor in enumerate(matches, start=1):
+        print(f"[{i}] Name: {vendor.name} | Phone: {vendor.phone} | Email: {vendor.email}")
+
+#Add Details
+def add_details():
+    #checks if there are vendors
+    if not vendors:
+        print("\nNo vendors available to update.")
+        return
+
+    #Shows a list of vendors
+    print("\nAdd Extra Details")
+    view_vendors(vendors)
+
+    #Asks what vendor to add details too
+    choice = input("\nEnter vendor number to update (or press Enter to cancel): ").strip()
+    if choice == "":
+        print("Cancelled.")
+        return
+    #Checks if the input is vaild
+    if not choice.isdigit():
+        print("Invalid input. Please enter a number.")
+        return
+
+    #Checks if there is a vendor on the inputted Index
+    index = int(choice) - 1
+    if index < 0 or index >= len(vendors):
+        print("That number is out of range.")
+        return
+
+    vendor = vendors[index]
+
+    # Ask user for attribute name
+    attr = input("Enter the attribute name to: ").strip()
+
+    #Cancles if Space is pressed without anything else
+    if attr == "":
+        print("Cancelled (no attribute name).")
+        return
+
+    #Prevent overwriting base fields
+    protected = {"name", "phone", "email"}
+    if attr.lower() in protected:
+        print(f"'{attr}' is a protected field and cannot be added/changed here.")
+        return
+
+    #makes sure the name is valid
+    if not attr.isidentifier():
+        print("Invalid attribute name. Use letters/numbers/underscore and don't start with a number please")
+        return
+
+    #This is for inputting the details
+    details = input(f"Enter details: '{attr}': ").strip()
+    if details == "":
+        print("Cancelled (no details).")
+        return
+
+    #Add/update attribute
+    setattr(vendor, attr, details)
+
+    print(f"Saved extra detail for '{vendor.name}': {attr} = {details}")
 
 #Some Base Vendors
 vendors = [
@@ -91,7 +191,7 @@ vendors = [
 ]
 
 
-#Make's sure you are viewing the Vendor menu
+#Make's sure you are viewing the Vendor menu whenever nothing else is happening
 while True:
     choice = action_menu()
 
@@ -109,13 +209,23 @@ while True:
     elif choice == "3":
         print("please choose a vendor to remove")
         remove_vendor(vendors)
-
         input("to contiune press [enter]" )
 
+    #Search Vendors
+    elif choice == "4":
+        search_vendor(vendors)
+        input("to contiune press [enter]" )
 
+    #Add Extra details
+    elif choice == "5":
+        add_details()
+        input("to contiune press [enter]" )
+
+    #Exit
     elif choice == "6":
         print("Goodbye!")
         break
-
+    
+    #Appears when user is being stupid and puts an invalid input
     else:
-        print("Option not implemented yet.")
+        print("no.")
