@@ -186,7 +186,7 @@ def add_details():
 
 #Some Base Vendors
 vendors = [
-    Vendor("ABC Supplies", "021-555-111", "abc@example.com"),
+    Vendor("Revoultionary Supplies", "021-555-111", "Revoultionary@example.com"),
     Vendor("Kiwi Tools", "021-555-222", "kiwitools@example.com")
 ]
 
